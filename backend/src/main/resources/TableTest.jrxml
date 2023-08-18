@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.20.5.final using JasperReports Library version 6.20.5-3efcf2e67f959db3888d79f73dde2dbd7acb4f8e  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="TableTest" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" isTitleNewPage="true" isSummaryNewPage="true" uuid="07bc7767-5b66-4ceb-b705-7518419a9e76">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+	<import value="com.pdf.generator.model.PlayerStatistics"/>
+	<import value="com.pdf.generator.enums.GoalType"/>
+	<import value="com.pdf.generator.model.Player"/>
+	<import value="com.pdf.generator.model.Team"/>
+	<style name="Table_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="Table_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="Table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<subDataset name="PlayerCollectionDataset" uuid="5083d9a2-305d-49fe-a3a8-736eefa9e686">
+		<queryString>
+			<![CDATA[]]>
+		</queryString>
+		<field name="name" class="java.lang.String"/>
+		<field name="statistics.goals" class="java.util.Map"/>
+		<field name="photo" class="java.lang.String"/>
+		<field name="statistics.team" class="com.pdf.generator.model.Team"/>
+		<field name="statistics" class="com.pdf.generator.model.PlayerStatistics"/>
+	</subDataset>
+	<parameter name="CollectionBeanParam" class="net.sf.jasperreports.engine.data.JRBeanCollectionDataSource"/>
+	<parameter name="SUBREPORT_PARAMETER" class="net.sf.jasperreports.engine.JasperReport"/>
+	<parameter name="subList" class="java.util.List"/>
+	<parameter name="name" class="java.lang.String"/>
+	<parameter name="statBean" class="net.sf.jasperreports.engine.data.JRBeanCollectionDataSource"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="name" class="java.lang.String"/>
+	<field name="statistics.goals" class="java.util.Map"/>
+	<field name="photo" class="java.lang.String"/>
+	<field name="statistics.team" class="com.pdf.generator.model.Team"/>
+	<field name="statistics" class="com.pdf.generator.model.PlayerStatistics"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="351">
+			<subreport>
+				<reportElement x="2" y="11" width="528" height="340" uuid="b689586a-1eaf-4f19-b865-552c795cb074"/>
+				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($P{subList})]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_PARAMETER}]]></subreportExpression>
+			</subreport>
+		</band>
+	</title>
+	<detail>
+		<band height="282" splitType="Stretch">
+			<componentElement>
+				<reportElement style="Table_CH" mode="Transparent" x="90" y="90" width="340" height="162" forecolor="#BD3D3A" uuid="4033d05a-3377-4160-8b2f-694870cd950e">
+					<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.VerticalRowLayout"/>
+					<property name="com.jaspersoft.studio.table.style.table_header" value="Table_TH"/>
+					<property name="com.jaspersoft.studio.table.style.column_header" value="Table_CH"/>
+					<property name="com.jaspersoft.studio.table.style.detail" value="Table_TD"/>
+				</reportElement>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<datasetRun subDataset="PlayerCollectionDataset" uuid="2b4a0211-a254-4e86-9ef5-8db7319a8be9">
+						<dataSourceExpression><![CDATA[$P{CollectionBeanParam}]]></dataSourceExpression>
+					</datasetRun>
+					<jr:column width="60" uuid="eece8cfa-ed3a-4834-a373-e1b14c823abd">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column1"/>
+						<jr:tableHeader style="Table_TH" height="60" rowSpan="1">
+							<image>
+								<reportElement stretchType="ContainerHeight" x="0" y="0" width="60" height="60" uuid="ea818390-c2ee-4b0b-b3d7-fa7deb4f33fb"/>
+								<imageExpression><![CDATA[$F{statistics.team}.getLogo()]]></imageExpression>
+							</image>
+						</jr:tableHeader>
+						<jr:tableFooter style="Table_TH" height="30" rowSpan="1"/>
+						<jr:columnHeader style="Table_CH" height="30" rowSpan="1"/>
+						<jr:columnFooter style="Table_CH" height="2" rowSpan="1"/>
+						<jr:detailCell style="Table_TD" height="58">
+							<image>
+								<reportElement x="0" y="0" width="60" height="58" uuid="03839629-f4af-421c-b38b-3c488b885f79"/>
+								<imageExpression><![CDATA[$F{photo}]]></imageExpression>
+							</image>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="140" uuid="41ff2d82-48f9-4b19-8914-75dbbf45ad24">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column2"/>
+						<jr:tableHeader style="Table_TH" height="60" rowSpan="1"/>
+						<jr:tableFooter style="Table_TH" height="30" rowSpan="1"/>
+						<jr:columnHeader style="Table_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="140" height="30" uuid="2ddefcd2-3866-422b-b990-7275c5fca34e"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<text><![CDATA[Name]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:columnFooter style="Table_CH" height="2" rowSpan="1"/>
+						<jr:detailCell style="Table_TD" height="58">
+							<textField>
+								<reportElement x="0" y="0" width="140" height="58" uuid="c3f4579e-7e67-4f88-8414-52f8e468d924"/>
+								<box>
+									<pen lineColor="#3659B3"/>
+									<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+									<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+									<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+									<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+								</box>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<textFieldExpression><![CDATA[$F{name}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="70" uuid="79772d32-59cf-4bdd-b419-9ea83d307b8d">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column3"/>
+						<jr:tableHeader style="Table_TH" height="60" rowSpan="1"/>
+						<jr:tableFooter style="Table_TH" height="30" rowSpan="1"/>
+						<jr:columnHeader style="Table_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="70" height="30" uuid="bacdf69d-6f18-4ca6-b2ef-440e476ab94f"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<text><![CDATA[Goals]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:columnFooter style="Table_CH" height="2" rowSpan="1"/>
+						<jr:detailCell style="Table_TD" height="58">
+							<textField>
+								<reportElement x="0" y="0" width="70" height="58" uuid="20d3e2b2-11e4-4729-a7ff-f926a4be71a6"/>
+								<box>
+									<pen lineColor="#3659B3"/>
+									<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+									<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+									<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+									<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+								</box>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<textFieldExpression><![CDATA[$F{statistics.goals}.get(GoalType.total)!=null?$F{statistics.goals}.get(GoalType.total): 0]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="70" uuid="c468b40e-eefb-4f69-a5bd-63cec41a8c5a">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column4"/>
+						<jr:tableHeader style="Table_TH" height="60" rowSpan="1"/>
+						<jr:tableFooter style="Table_TH" height="30" rowSpan="1"/>
+						<jr:columnHeader style="Table_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="70" height="30" uuid="5965dbf0-7af6-47fa-b675-eec9abe3b6f3"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<text><![CDATA[Assists]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:columnFooter style="Table_CH" height="2" rowSpan="1"/>
+						<jr:detailCell style="Table_TD" height="58">
+							<textField>
+								<reportElement x="0" y="0" width="70" height="58" uuid="8f36d010-8dc7-42fa-871f-95d61f3c4dfc"/>
+								<box>
+									<pen lineColor="#3659B3"/>
+									<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+									<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+									<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+									<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+								</box>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<textFieldExpression><![CDATA[$F{statistics.goals}.get(GoalType.assists)!=null?$F{statistics.goals}.get(GoalType.assists): 0]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+			<staticText>
+				<reportElement x="0" y="21" width="555" height="50" uuid="40dba012-af1a-45b2-a763-74db2ef6b81a"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="20" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Player Statistics]]></text>
+			</staticText>
+		</band>
+	</detail>
+	<summary>
+		<band height="373">
+			<barChart>
+				<chart evaluationTime="Report">
+					<reportElement x="0" y="17" width="555" height="356" uuid="2c51e2bd-f49a-4e99-a6fb-5b0af6c72071"/>
+					<chartTitle/>
+					<chartSubtitle/>
+					<chartLegend/>
+				</chart>
+				<categoryDataset>
+					<dataset>
+						<datasetRun subDataset="PlayerCollectionDataset" uuid="7f475304-afb1-49cf-a8d7-e077213120f4">
+							<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($P{subList})]]></dataSourceExpression>
+						</datasetRun>
+					</dataset>
+					<categorySeries>
+						<seriesExpression><![CDATA["Goals Scored"]]></seriesExpression>
+						<categoryExpression><![CDATA[$F{name}]]></categoryExpression>
+						<valueExpression><![CDATA[$F{statistics.goals}.get(GoalType.total)!=null?$F{statistics.goals}.get(GoalType.total): 0]]></valueExpression>
+						<labelExpression><![CDATA[$F{name}]]></labelExpression>
+					</categorySeries>
+					<categorySeries>
+						<seriesExpression><![CDATA["Assists"]]></seriesExpression>
+						<categoryExpression><![CDATA[$F{name}]]></categoryExpression>
+						<valueExpression><![CDATA[$F{statistics.goals}.get(GoalType.assists)!=null?$F{statistics.goals}.get(GoalType.assists): 0]]></valueExpression>
+						<labelExpression><![CDATA[$F{name}]]></labelExpression>
+					</categorySeries>
+				</categoryDataset>
+				<barPlot>
+					<plot foregroundAlpha="1.0" labelRotation="32.0"/>
+					<itemLabel/>
+					<categoryAxisFormat labelRotation="32.0">
+						<axisFormat labelColor="#000000" tickLabelColor="#000000" axisLineColor="#000000"/>
+					</categoryAxisFormat>
+					<valueAxisFormat>
+						<axisFormat labelColor="#000000" tickLabelColor="#000000" verticalTickLabels="false" axisLineColor="#000000"/>
+					</valueAxisFormat>
+				</barPlot>
+			</barChart>
+		</band>
+	</summary>
+</jasperReport>

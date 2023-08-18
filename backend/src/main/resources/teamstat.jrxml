@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.20.5.final using JasperReports Library version 6.20.5-3efcf2e67f959db3888d79f73dde2dbd7acb4f8e  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="teamstat" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="b0c1cdde-d20d-4efb-a0f8-0d16ada5f6ae">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+	<import value="com.pdf.generator.model.PlayerStatistics"/>
+	<import value="com.pdf.generator.enums.GoalType"/>
+	<import value="com.pdf.generator.model.Player"/>
+	<import value="com.pdf.generator.model.Team"/>
+	<import value="com.pdf.generator.model.TeamStatistics"/>
+	<subDataset name="PlayerCollectionDataset" uuid="09debf1d-17c4-4832-947d-df0777b28ac1">
+		<queryString>
+			<![CDATA[]]>
+		</queryString>
+		<field name="name" class="java.lang.String"/>
+		<field name="statistics.goals" class="java.util.Map"/>
+		<field name="photo" class="java.lang.String"/>
+		<field name="statistics.team" class="com.pdf.generator.model.Team"/>
+		<field name="statistics" class="com.pdf.generator.model.PlayerStatistics"/>
+	</subDataset>
+	<parameter name="subList" class="java.util.List"/>
+	<parameter name="CollectionBeanParam" class="net.sf.jasperreports.engine.data.JRBeanCollectionDataSource"/>
+	<parameter name="statBean" class="net.sf.jasperreports.engine.data.JRBeanCollectionDataSource"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="statistics.team" class="com.pdf.generator.model.Team"/>
+	<field name="statistics" class="com.pdf.generator.model.PlayerStatistics"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="337" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="530" height="60" uuid="24510d25-e733-425f-8a3a-9c9207e619d5"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="20" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Team Statistics]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="140" y="110" width="100" height="30" uuid="1bade9b4-3690-4fd5-b189-68d9790b3975"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{statistics}.getTeam().getTeamStatistics().getPlayedHome()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="110" width="100" height="30" uuid="9c1c1856-367b-4158-8b59-bb9ebd8d798e"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Games Played]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="140" y="80" width="100" height="30" uuid="f8f33cd5-1a0c-4607-8d46-bd214507f1ae"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Home]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="255" y="80" width="100" height="30" uuid="2d3d7f03-0c31-4a52-bb70-d22ab714f3d7"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Away]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="370" y="80" width="100" height="30" uuid="0799dd25-f87f-4c57-95ea-9e2495b77693"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[All]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="370" y="110" width="100" height="30" uuid="fba1b32b-8d6c-4c99-a9ec-c27f598f72b1"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{statistics}.getTeam().getTeamStatistics().getPlayedTotal()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="255" y="110" width="100" height="30" uuid="b12eb868-db45-4c76-8f08-043748e6ecbc"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{statistics}.getTeam().getTeamStatistics().getPlayedAway()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="145" width="100" height="30" uuid="c69c3ea4-accd-45be-a074-6bcb9bd24e5e"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Wins]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="184" width="100" height="30" uuid="0811db98-d019-47ba-8ccd-93ef1b43a527"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Draws]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="140" y="145" width="100" height="30" uuid="7692fcde-b478-4469-97ff-e7208328c220"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{statistics}.getTeam().getTeamStatistics().getWinsHome()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="370" y="145" width="100" height="30" uuid="425fa03c-9e28-4905-9503-61fa6d7ebc66"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{statistics}.getTeam().getTeamStatistics().getWinsTotal()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="255" y="184" width="100" height="30" uuid="cefadbec-03f7-4b54-a71c-2737afd67e88"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{statistics}.getTeam().getTeamStatistics().getDrawsAway()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="255" y="145" width="100" height="30" uuid="d920f850-2a97-41c7-a42b-35edc3b417bc"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{statistics}.getTeam().getTeamStatistics().getWinsAway()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="140" y="184" width="100" height="30" uuid="ddf1678d-d431-4a97-8be1-6ae25aad9a2e"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{statistics}.getTeam().getTeamStatistics().getDrawsHome()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="370" y="184" width="100" height="30" uuid="bb02284f-0793-4e13-a161-1bb9c323eb3c"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{statistics}.getTeam().getTeamStatistics().getDrawsTotal()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="140" y="220" width="100" height="30" uuid="fcbdef15-ab6c-43a9-bedb-6c2dce81b197"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{statistics}.getTeam().getTeamStatistics().getLosesHome()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="255" y="220" width="100" height="30" uuid="438675fa-c11a-4156-b396-9179816fe624"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{statistics}.getTeam().getTeamStatistics().getLosesAway()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="370" y="220" width="100" height="30" uuid="3edad9a0-beb7-4476-b5c0-7b5a91cc969c"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{statistics}.getTeam().getTeamStatistics().getLosesAway()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="220" width="100" height="30" uuid="2820cd23-edad-4406-8332-8d68402dbb55"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Losses]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="1" y="258" width="528" height="1" uuid="1e447280-6036-4006-bc84-0b7b14f65e94"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="0" y="300" width="100" height="30" uuid="cc904646-885a-4d2c-89b4-6d5a48042007"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Goals Against]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="270" width="100" height="30" uuid="0fa70289-7eaa-4671-904c-128052027795"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Goals For]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="370" y="300" width="100" height="30" uuid="48e7e682-01e4-4628-9df5-62d77a128b32"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{statistics}.getTeam().getTeamStatistics().getGoalsAgainstTotal()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="255" y="300" width="100" height="30" uuid="219c3afe-beb2-4cbd-a866-fd6b816a2d63"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{statistics}.getTeam().getTeamStatistics().getGoalsAgainstAway()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="140" y="300" width="100" height="30" uuid="55f369a1-d47a-4783-b315-41f45979c9ef"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{statistics}.getTeam().getTeamStatistics().getGoalsAgainstHome()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="140" y="270" width="100" height="30" uuid="907083e7-6056-49fb-9135-89cda49f00ef"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{statistics}.getTeam().getTeamStatistics().getGoalsForHome()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="255" y="270" width="100" height="30" uuid="c1e40f7a-f37d-490e-8851-df4fc3e2abf3"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{statistics}.getTeam().getTeamStatistics().getGoalsForAway()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="370" y="270" width="100" height="30" uuid="d0822b8f-a7ff-4324-9acc-392bbe077ab9"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{statistics}.getTeam().getTeamStatistics().getGoalsForTotal()]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+</jasperReport>
